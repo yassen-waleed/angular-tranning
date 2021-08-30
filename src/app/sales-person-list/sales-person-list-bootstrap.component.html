@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th scope="col">First_Name</th>
+            <th scope="col">Last_Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Sales_Volume</th>
+            <th scope="col">met quota?</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr scope="row" *ngFor="let temp of salespersonlist">
+            <td> {{ temp.firstname }} </td>
+            <td> {{ temp.lastname }} </td>
+            <td> {{ temp.email }} </td>
+            <td> {{ temp.salesvolume |currency: 'USD'}} </td>
+            <td>
+                <div *ngIf="temp.salesvolume >= 60000 ;else myElseBloack ">yes</div>
+                <ng-template #myElseBloack >No</ng-template>
+            </td>
+        </tr>
+    </tbody>
+</table>
